@@ -255,7 +255,7 @@ object Failsafes : Feature() {
                 exit = mc.currentScreen != null && mc.currentScreen is GuiChest
                 if (exit) {
                     trades = (mc.currentScreen as GuiChest).inventorySlots.inventorySlots.find {
-                        it.hasStack && it.stack.displayName.stripColor() == "Trades"
+                        it.hasStack && it.stack.displayName.stripColor() == "Booster Cookie"
                     }
                     exit = trades != null
                 }

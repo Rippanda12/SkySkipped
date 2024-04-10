@@ -31,6 +31,8 @@ import me.cephetir.skyskipped.features.Feature
 import me.cephetir.skyskipped.features.impl.macro.macros.F11Macro
 import me.cephetir.skyskipped.features.impl.macro.macros.NetherwartMacro
 import me.cephetir.skyskipped.features.impl.macro.macros.SugarCaneMacro
+import me.cephetir.skyskipped.features.impl.macro.macros.OthercropMacro
+import me.cephetir.skyskipped.features.impl.macro.macros.MushroomMacro
 import net.minecraft.util.MouseHelper
 import net.minecraftforge.client.event.ClientChatReceivedEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -45,6 +47,8 @@ import kotlin.math.roundToLong
 object MacroManager : Feature() {
     val macros = listOf(
         NetherwartMacro(),
+        OthercropMacro(),
+        MushroomMacro(),
         SugarCaneMacro(),
         F11Macro()
     )

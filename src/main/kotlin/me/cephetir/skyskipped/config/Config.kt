@@ -1070,7 +1070,7 @@ object Config {
     @JvmField
     val macroType = sm.selectorSetting("Macro Type") {
         category = "Macro"
-        options = arrayOf("Nether Wart (SShaped)", "Sugar Cane (Normal and SShaped)", "F11 Macro")
+        options = arrayOf("Nether Wart (SShaped)", "Other Crops", "Mushroom", "Sugar Cane (Normal and SShaped)", "F11 Macro")
         value = 0
         listener = { MacroManager.current = MacroManager.macros[it] }
     }
@@ -1285,6 +1285,282 @@ object Config {
     }
 
     @JvmField
+    val otherCropDirection = sm.selectorSetting("Farm Direction") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        description = "Set direction of your eyes (check it with f3)"
+        options = arrayOf("North", "East", "West", "South")
+    }
+
+    @JvmField
+    val otherCropType = sm.selectorSetting("Farm Type") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        description = "Type of your farm"
+        options = arrayOf("Dropdown")
+    }
+
+    @JvmField
+    val otherCropSetSpawn = sm.booleanSetting("Auto Set Spawn") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val otherCropStuck = sm.booleanSetting("Unstuck Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val otherCropBedrock = sm.booleanSetting("Bedrock cage Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val otherCropDesync = sm.booleanSetting("Desync Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val otherCropDesyncTime = sm.numberSetting("Desync Failsafe Timeout") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = 5.0
+        min = 1.0
+        max = 20.0
+        isHidden = { !otherCropDesync.value }
+    }
+
+    @JvmField
+    val otherCropJacob = sm.booleanSetting("Jacob Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val otherCropJacobNumber = sm.numberSetting("Jacob Failsafe Stop At") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = 400000.0
+        min = 0.0
+        max = 2_500_000.0
+        places = -3
+        isHidden = { !otherCropJacob.value }
+    }
+
+    @JvmField
+    val otherCropFullInv = sm.booleanSetting("Full Inventory Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val otherCropBanWaveChecker = sm.booleanSetting("Ban Wave Checker") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val otherCropBanWaveCheckerDisable = sm.booleanSetting("Ban Wave Auto Macro Disable") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+        isHidden = { !otherCropBanWaveChecker.value }
+    }
+
+    @JvmField
+    val otherCropBanWaveCheckerTimer = sm.numberSetting("Ban Wave Checker Timer") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = 5.0
+        min = 0.1
+        max = 30.0
+        places = 1
+    }
+
+    @JvmField
+    val otherCropReconnect = sm.booleanSetting("Auto Reconnect") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+    }
+
+    @JvmField
+    val melonPumkinDirection = sm.selectorSetting("Farm Direction") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        description = "Set direction of your eyes (check it with f3)"
+        options = arrayOf("North", "East", "West", "South")
+    }
+
+    @JvmField
+    val melonPumkinType = sm.selectorSetting("Farm Type") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        description = "Type of your farm"
+        options = arrayOf("SS")
+    }
+
+    @JvmField
+    val melonPumkinSetSpawn = sm.booleanSetting("Auto Set Spawn") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val melonPumkinStuck = sm.booleanSetting("Unstuck Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val melonPumkinBedrock = sm.booleanSetting("Bedrock cage Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val melonPumkinDesync = sm.booleanSetting("Desync Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val melonPumkinDesyncTime = sm.numberSetting("Desync Failsafe Timeout") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = 5.0
+        min = 1.0
+        max = 20.0
+        isHidden = { !melonPumkinDesync.value }
+    }
+
+    @JvmField
+    val MushroomJacob = sm.booleanSetting("Jacob Failsafe") {
+        category = "Macro"
+        subCategory = "Mushroom Macro"
+        value = true
+    }
+
+    @JvmField
+    val MushroomJacobNumber = sm.numberSetting("Jacob Failsafe Stop At") {
+        category = "Macro"
+        subCategory = "Mushroom Macro"
+        value = 400000.0
+        min = 0.0
+        max = 2_500_000.0
+        places = -3
+        isHidden = { !MushroomJacob.value }
+    }
+
+    @JvmField
+    val MushroomFullInv = sm.booleanSetting("Full Inventory Failsafe") {
+        category = "Macro"
+        subCategory = "Mushroom Macro"
+        value = true
+    }
+
+    @JvmField
+    val MushroomBanWaveChecker = sm.booleanSetting("Ban Wave Checker") {
+        category = "Macro"
+        subCategory = "Mushroom Macro"
+        value = true
+    }
+
+    @JvmField
+    val MushroomBanWaveCheckerDisable = sm.booleanSetting("Ban Wave Auto Macro Disable") {
+        category = "Macro"
+        subCategory = "Mushroom Macro"
+        value = true
+        isHidden = { !MushroomBanWaveChecker.value }
+    }
+
+    @JvmField
+    val MushroomBanWaveCheckerTimer = sm.numberSetting("Ban Wave Checker Timer") {
+        category = "Macro"
+        subCategory = "Mushroom Macro"
+        value = 5.0
+        min = 0.1
+        max = 30.0
+        places = 1
+    }
+
+    @JvmField
+    val MushroomReconnect = sm.booleanSetting("Auto Reconnect") {
+        category = "Macro"
+        subCategory = "Mushroom Macro"
+    }
+
+    @JvmField
+    val melonPumkinJacob = sm.booleanSetting("Jacob Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val melonPumkinJacobNumber = sm.numberSetting("Jacob Failsafe Stop At") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = 400000.0
+        min = 0.0
+        max = 2_500_000.0
+        places = -3
+        isHidden = { !melonPumkinJacob.value }
+    }
+
+    @JvmField
+    val melonPumkinFullInv = sm.booleanSetting("Full Inventory Failsafe") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val melonPumkinBanWaveChecker = sm.booleanSetting("Ban Wave Checker") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+    }
+
+    @JvmField
+    val melonPumkinBanWaveCheckerDisable = sm.booleanSetting("Ban Wave Auto Macro Disable") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = true
+        isHidden = { !melonPumkinBanWaveChecker.value }
+    }
+
+    @JvmField
+    val melonPumkinBanWaveCheckerTimer = sm.numberSetting("Ban Wave Checker Timer") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+        value = 5.0
+        min = 0.1
+        max = 30.0
+        places = 1
+    }
+
+    @JvmField
+    val melonPumkinReconnect = sm.booleanSetting("Auto Reconnect") {
+        category = "Macro"
+        subCategory = "Other Crops Macro"
+    }
+
+    @JvmField
     val sugarCaneDirection = sm.selectorSetting("Farm Direction (Only SShaped Type)") {
         category = "Macro"
         subCategory = "Sugar Cane Macro"
@@ -1297,7 +1573,7 @@ object Config {
         category = "Macro"
         subCategory = "Sugar Cane Macro"
         description = "Set yaw direction (check it with f3)"
-        options = arrayOf("45", "-45")
+        options = arrayOf("45", "-45", "135", "-135")
     }
 
     @JvmField
